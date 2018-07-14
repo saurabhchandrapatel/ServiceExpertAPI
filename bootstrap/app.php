@@ -67,6 +67,12 @@ $app->singleton(
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+
+$app->routeMiddleware([
+    'jwt.auth' => App\Http\Middleware\JwtMiddleware::class,
+]);
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -92,6 +98,7 @@ $app->singleton(
 | can respond to, as well as the controllers that may handle them.
 |
 */
+
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',

@@ -23,14 +23,11 @@ class Handler extends ExceptionHandler
         ValidationException::class,
     ];
 
-    /**
-     * Report or log an exception.
-     *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param  \Exception  $e
-     * @return void
-     */
+	/**
+	 * @param Exception $e
+	 *
+	 * @throws Exception
+	 */
     public function report(Exception $e)
     {
         parent::report($e);

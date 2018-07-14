@@ -11,9 +11,20 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-    ];
-});
+// $factory->define(App\User::class, function (Faker\Generator $faker) {
+//     return [
+//         'name' => $faker->name,
+//         'email' => $faker->email,
+//     ];
+// });
+
+//$factory->define(App\User::class, function (Faker\Generator $faker) {
+//    return [
+//        'name'     => $faker->name,
+//        'username'    => $faker->unique()->name,
+//        'email'    => $faker->unique()->email,
+//        'phonenumber'    => $faker->unique()->phonenumber,
+//        'password' => bcrypt('12345'),
+//        'type' => 1,
+//    ];
+//});
