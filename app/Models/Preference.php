@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Preference extends Model 
 {
 
-    /**
+
+	protected $table = 'preference';
+
+	/**
      *
      * @var array
      */

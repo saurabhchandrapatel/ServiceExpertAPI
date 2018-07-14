@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Payments extends Model 
 {
 
-    /**
+
+	protected $table = 'payments';
+
+	/**
      *
      * @var array
      */

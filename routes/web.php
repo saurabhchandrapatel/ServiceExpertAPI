@@ -16,7 +16,6 @@ $router->get('/', function () use ($router) {
 });
 
 
-
 $router->post(
     'auth/login', 
     [
@@ -29,9 +28,34 @@ $router->group(
     ['middleware' => 'jwt.auth'], 
     function() use ($router) {
         $router->get('users', function() {
-            $users = \App\User::all();
+            $users = \App\Models\Users::all();
             return response()->json($users);
         });
+
+	    $router->get('category', [
+		    'uses' => 'CategoriesController@gelAll'
+	    ]);
+
+	    $router->get('product', [
+		    'uses' => 'ProductController@getAll'
+	    ]);
+
+	    $router->get('/product/{id}', [
+		    'uses' => 'ProductController@details'
+	    ]);
+
+
+	    $router->get('order', [
+		    'uses' => 'OrderController@getAll'
+	    ]);
+
+
+	    $router->get('/filter-product/{type}/{id}', [
+		    'uses' => 'ProductController@filter'
+	    ]);
+
+
+
     }
 );
 

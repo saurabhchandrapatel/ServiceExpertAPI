@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
-class CategoriesController extends BaseController
+class UserController extends BaseController
 {
     /**
      * The request instance.
@@ -25,11 +25,32 @@ class CategoriesController extends BaseController
 	/**
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-    public function gelAll() {
+    public function profile() {
 
-        $categories = App/Model/Categories::where('status', 1)->all()->orderby('weight');
-
-        // Bad Request response
-        return response()->json($categories , 400);
+	    //TODO
+	    // Bad Request response
+	    return response()->json([] , 400);
     }
+
+	public function rating() {
+
+    	//TODO
+		// Bad Request response
+		return response()->json([] , 400);
+	}
+
+
+	public function update(){
+		//TODO
+		// Bad Request response
+		return response()->json([] , 400);
+	}
+
+	public function saveAddress(){
+		//TODO
+		// Bad Request response
+		return response()->json([] , 400);
+	}
+
+
 }

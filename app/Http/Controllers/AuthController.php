@@ -5,8 +5,8 @@ use App\Models\Users;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Lumen\Routing\Controller as BaseController;
-class AuthController extends BaseController 
+use App\Http\Controllers\Controller as BaseController;
+class AuthController extends BaseController
 {
     /**
      * The request instance.
@@ -22,14 +22,17 @@ class AuthController extends BaseController
      */
     public function __construct(Request $request) {
         $this->request = $request;
+
     }
-    /**
-     * Create a new token.
-     * 
-     * @param  \App\Models\User   $user
-     * @return string
-     */
+
+	/**
+	 * @param Users $user
+	 *
+	 * @return string
+	 */
     protected function jwt(Users $user) {
+
+
         $payload = [
             'iss' => "lumen-jwt", // Issuer of the token
             'sub' => $user->id, // Subject of the token
@@ -40,14 +43,16 @@ class AuthController extends BaseController
         // As you can see we are passing `JWT_SECRET` as the second parameter that will 
         // be used to decode the token in the future.
         return JWT::encode($payload, env('JWT_SECRET'));
-    } 
-    /**
-     * Authenticate a user and return the token if the provided credentials are correct.
-     * 
-     * @param  \App\Models\User   $user
-     * @return mixed
-     */
-    public function authenticate(Users $user) {
+    }
+
+
+	/**
+	 * @param Users $user
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 * @throws \Illuminate\Validation\ValidationException
+	 */
+    public function authenticate() {
         $this->validate($this->request, [
             'email'     => 'required|email',
             'password'  => 'required'
@@ -63,6 +68,9 @@ class AuthController extends BaseController
                 'error' => 'Email does not exist.'
             ], 400);
         }
+
+
+//        var_dump( Hash::make('123456')); die;
         // Verify the password and generate the token
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([

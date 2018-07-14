@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
-class CategoriesController extends BaseController
+class OrderController extends BaseController
 {
     /**
      * The request instance.
@@ -26,10 +26,8 @@ class CategoriesController extends BaseController
 	 * @return \Illuminate\Http\JsonResponse
 	 */
     public function gelAll() {
-
-        $categories = App/Model/Categories::where('status', 1)->all()->orderby('weight');
-
-        // Bad Request response
-        return response()->json($categories , 400);
+		    //TODO
+		    // Bad Request response
+		    return response()->json([] , 400);
     }
 }
