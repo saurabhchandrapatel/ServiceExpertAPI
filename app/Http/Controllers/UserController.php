@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Users;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
@@ -25,11 +26,17 @@ class UserController extends BaseController
 	/**
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-    public function profile() {
+    public function accounts() {
 
-	    //TODO
-	    // Bad Request response
-	    return response()->json([] , 400);
+	    $Profile = Users::where('id' , $this->request->auth->id )->where('status' ,1)->orderBy( 'id', 'desc' )->get( [
+		    'id',
+		    'name',
+		    'type',
+		    'username',
+		    'email',
+		    'phonenumber'
+	    ] )->first();
+	    return response()->json($Profile , 200);
     }
 
 	public function rating() {

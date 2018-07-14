@@ -27,10 +27,10 @@ $router->post(
 $router->group(
     ['middleware' => 'jwt.auth'], 
     function() use ($router) {
-        $router->get('users', function() {
-            $users = \App\Models\Users::all();
-            return response()->json($users);
-        });
+
+	    $router->get('accounts', [
+		    'uses' => 'UserController@accounts'
+	    ]);
 
 	    $router->get('category', [
 		    'uses' => 'CategoriesController@gelAll'

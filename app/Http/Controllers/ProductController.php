@@ -54,6 +54,13 @@ class ProductController extends BaseController
 					'info',
 					'price'
 				] );
+			case "providers":
+				$Product = Product::where('prid' ,$id)->where('status' ,1)->orderBy( 'id', 'desc' )->get( [
+					'id',
+					'name',
+					'info',
+					'price'
+				] );
 			default:
 				$Product = Product::where( 'status', 1 )->orderBy( 'id', 'desc' )->get( [
 					'id',
@@ -74,12 +81,12 @@ class ProductController extends BaseController
 	 */
     public function details($id){
 
-	    $Product = Product::where('cid' ,$id)->where('status' ,1)->orderBy( 'id', 'desc' )->get( [
+	    $Product = Product::where('id' ,$id)->where('status' ,1)->orderBy( 'id', 'desc' )->get( [
 		    'id',
 		    'name',
 		    'info',
 		    'price'
-	    ] );
+	    ] )->first();
 	    return response()->json($Product , 200);
     }
 
