@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 class Users extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    use Authenticatable, Authorizable;
+    use Authenticatable, Authorizable,SoftDeletes;
 
 
 	protected $table = 'users';
@@ -32,4 +32,7 @@ class Users extends Model implements AuthenticatableContract, AuthorizableContra
     protected $hidden = [
         'id' ,'password', 'picture' , 'created' , 'updated'
     ];
+
+    protected $dates = ['deleted_at'];
+
 } 

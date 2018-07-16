@@ -31,6 +31,11 @@ class Rating extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
+
+
 }
   
 

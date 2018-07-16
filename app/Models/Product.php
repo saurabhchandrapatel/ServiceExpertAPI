@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model 
 {
 
+
+    use SoftDeletes;
+
 	protected $table = 'product';
 
 	/**
@@ -35,5 +38,8 @@ class Product extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
 }
   

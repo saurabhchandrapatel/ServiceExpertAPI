@@ -8,6 +8,8 @@ class Providers extends Model
 {
 
 
+    use SoftDeletes;
+
 	protected $table = 'providers';
 
 	/**
@@ -32,6 +34,10 @@ class Providers extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
+
 }
   
 

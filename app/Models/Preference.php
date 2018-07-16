@@ -8,6 +8,8 @@ class Preference extends Model
 {
 
 
+    use SoftDeletes;
+
 	protected $table = 'preference';
 
 	/**
@@ -23,4 +25,7 @@ class Preference extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
 }

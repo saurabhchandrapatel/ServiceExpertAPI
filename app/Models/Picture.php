@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Picture extends Model 
 {
 
+
+    use SoftDeletes;
+
 	protected $table = 'pictures';
 
 	/**
@@ -22,4 +25,7 @@ class Picture extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
 }

@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Categories extends Model 
 {
 
+    use SoftDeletes;
+
 	protected $table = 'categories';
+
+
     /**
      *
      * @var array
@@ -22,4 +26,7 @@ class Categories extends Model
      */
     protected $hidden = [
     ];
+
+
+    protected $dates = ['deleted_at'];
 } 

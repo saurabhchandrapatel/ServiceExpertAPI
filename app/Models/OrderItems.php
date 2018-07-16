@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItems extends Model 
 {
 
+    use SoftDeletes;
+
 	protected $table = 'order_items';
 
 	/**
@@ -22,4 +24,7 @@ class OrderItems extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
 }

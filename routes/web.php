@@ -28,6 +28,8 @@ $router->group(
     ['middleware' => 'jwt.auth'], 
     function() use ($router) {
 
+
+        //READ ONLY
 	    $router->get('accounts', [
 		    'uses' => 'UserController@accounts'
 	    ]);
@@ -49,11 +51,26 @@ $router->group(
 		    'uses' => 'OrderController@getAll'
 	    ]);
 
-
 	    $router->get('/filter-product/{type}/{id}', [
 		    'uses' => 'ProductController@filter'
 	    ]);
 
+        //user WRITE
+        $router->post('accounts', [
+            'uses' => 'UserController@update'
+        ]);
+
+        $router->post('add-address', [
+            'uses' => 'UserController@saveAddress'
+        ]);
+
+        $router->put('add-address/{id}', [
+            'uses' => 'UserController@updateAddress'
+        ]);
+
+        $router->post('order', [
+            'uses' => 'OrderController@add'
+        ]);
 
 
     }

@@ -8,6 +8,8 @@ class Payments extends Model
 {
 
 
+    use SoftDeletes;
+
 	protected $table = 'payments';
 
 	/**
@@ -23,4 +25,7 @@ class Payments extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
 }

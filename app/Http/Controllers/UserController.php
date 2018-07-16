@@ -12,11 +12,9 @@ class UserController extends BaseController
      * @var \Illuminate\Http\Request
      */
     private $request;
+
     /**
-     * Create a new controller instance.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
+     * @param Request $request
      */
     public function __construct(Request $request) {
         $this->request = $request;
@@ -48,9 +46,13 @@ class UserController extends BaseController
 
 
 	public function update(){
-		//TODO
-		// Bad Request response
-		return response()->json([] , 400);
+        $Users = Users::find($this->request->auth->id);
+        $Users->name = 'New Flight Name';
+        if( $Users->save()){
+            return response()->json([] , 201);
+        }else{
+            return response()->json([] , 400);
+        }
 	}
 
 	public function saveAddress(){
@@ -58,6 +60,12 @@ class UserController extends BaseController
 		// Bad Request response
 		return response()->json([] , 400);
 	}
+
+    public function updateAddress(){
+        //TODO
+        // Bad Request response
+        return response()->json([] , 400);
+    }
 
 
 }

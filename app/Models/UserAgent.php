@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAgent extends Model 
 {
+
+
+    use SoftDeletes;
+
+
 	protected $table = 'user_agent';
 
 	/**
@@ -22,6 +27,10 @@ class UserAgent extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
+
 }
   
 

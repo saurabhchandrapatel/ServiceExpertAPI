@@ -11,11 +11,9 @@ class OrderController extends BaseController
      * @var \Illuminate\Http\Request
      */
     private $request;
+
     /**
-     * Create a new controller instance.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
+     * @param Request $request
      */
     public function __construct(Request $request) {
         $this->request = $request;

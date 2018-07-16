@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model 
 {
 
+
+    use SoftDeletes;
+
 	protected $table = 'location';
 
 	/**
@@ -22,4 +25,7 @@ class Location extends Model
      * @var array
      */
     protected $hidden = [];
+
+    protected $dates = ['deleted_at'];
+
 }
